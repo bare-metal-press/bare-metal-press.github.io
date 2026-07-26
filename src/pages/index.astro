@@ -1,31 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-
-const description = 'Bare Metal Press.';
+import Hero from '../components/Hero.astro';
 ---
 
-<Base title={null} description={description}>
-  <section class="wrap hero">
-    <h1>Bare Metal Press</h1>
-  </section>
-
-  <style>
-    .hero {
-      display: grid;
-      align-content: center;
-      min-height: 78svh;
-      padding-block: clamp(3rem, 10vh, 6rem);
-      container-type: inline-size;
-    }
-
-    h1 {
-      /* "BARE METAL PRESS" measures 7.04em in Anton, so 100/7.04 = 14.2cqi
-         fills the container exactly. 14cqi leaves a hair of slack for
-         rounding, keeping it on one line at every width. */
-      font-size: 12vw; /* fallback for browsers without container queries */
-      font-size: 14cqi;
-      white-space: nowrap;
-      text-transform: uppercase;
-    }
-  </style>
+<Base title={null} description="Bare Metal Press.">
+  <Hero title="Bare Metal Press" em={7.04} />
 </Base>

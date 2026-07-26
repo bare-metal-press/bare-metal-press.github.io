@@ -1,0 +1,39 @@
+---
+/**
+ * Full-height hero: the title on a single line, scaled to fill its container.
+ *
+ * `em` is the title's advance width in Anton. Measure a new one with:
+ *
+ *   python3 -c "
+ *   from fontTools.ttLib import TTFont
+ *   f = TTFont('public/fonts/anton-regular.woff2')
+ *   c, h = f.getBestCmap(), f['hmtx']
+ *   s = 'YOUR TITLE'
+ *   print(sum(h[c[ord(x)]][0] for x in s) / f['head'].unitsPerEm)"
+ *
+ * The 0.986 factor leaves a hair of slack so rounding never forces a wrap.
+ */
+const { title, em } = Astro.props;
+const fit = `${((100 / em) * 0.986).toFixed(2)}cqi`;
+---
+
+<section class="wrap hero" style={`--fit: ${fit}`}>
+  <h1>{title}</h1>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    align-content: center;
+    min-height: 78svh;
+    padding-block: clamp(3rem, 10vh, 6rem);
+    container-type: inline-size;
+  }
+
+  h1 {
+    font-size: 12vw; /* fallback for browsers without container queries */
+    font-size: var(--fit);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+</style>
