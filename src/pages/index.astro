@@ -6,7 +6,7 @@ const description = 'Bare Metal Press.';
 
 <Base title={null} description={description}>
   <section class="wrap hero">
-    <h1>Bare&nbsp;Metal<br />Press</h1>
+    <h1>Bare Metal Press</h1>
   </section>
 
   <style>
@@ -15,12 +15,16 @@ const description = 'Bare Metal Press.';
       align-content: center;
       min-height: 78svh;
       padding-block: clamp(3rem, 10vh, 6rem);
+      container-type: inline-size;
     }
 
     h1 {
-      /* Anton is condensed, so it takes a larger size than a grotesque
-         to fill the same measure. */
-      font-size: clamp(3.5rem, 16vw, 10rem);
+      /* "BARE METAL PRESS" measures 7.04em in Anton, so 100/7.04 = 14.2cqi
+         fills the container exactly. 14cqi leaves a hair of slack for
+         rounding, keeping it on one line at every width. */
+      font-size: 12vw; /* fallback for browsers without container queries */
+      font-size: 14cqi;
+      white-space: nowrap;
       text-transform: uppercase;
     }
   </style>
