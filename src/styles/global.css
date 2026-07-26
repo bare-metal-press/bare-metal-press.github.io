@@ -1,17 +1,9 @@
-/* TeX Gyre Heros — a Helvetica-metric grotesque, GUST Font License.
-   Subset to Latin/Latin Extended-A; see LICENSE in /fonts. */
+/* Anton — condensed display face, SIL Open Font License.
+   Ships one weight only; see LICENSE in /fonts. */
 @font-face {
-  font-family: 'TeX Gyre Heros';
-  src: url('/fonts/texgyreheros-regular.woff2') format('woff2');
+  font-family: 'Anton';
+  src: url('/fonts/anton-regular.woff2') format('woff2');
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'TeX Gyre Heros';
-  src: url('/fonts/texgyreheros-bold.woff2') format('woff2');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -23,7 +15,7 @@
   --muted: #94918f;
   --rule: rgba(18, 20, 24, 0.14);
 
-  --font-display: 'TeX Gyre Heros', Helvetica, Arial, sans-serif;
+  --font-display: 'Anton', 'Helvetica Neue Condensed', Impact, sans-serif;
   --font-text: Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
@@ -55,9 +47,12 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  /* Anton ships a single weight and is already heavy — asking for 700
+     would make the browser fake a bolder cut and smear the letterforms. */
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: 0;
+  line-height: 1.05;
   margin: 0;
   text-wrap: balance;
 }
