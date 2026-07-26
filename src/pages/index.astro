@@ -2,23 +2,21 @@
 import Base from '../layouts/Base.astro';
 
 const description =
-  'Bare Metal Press es una editorial independiente dedicada a libros técnicos.';
+  'Bare Metal Press is an independent publisher of technical books.';
 ---
 
 <Base title={null} description={description}>
   <section class="wrap hero">
-    <p class="eyebrow">Editorial independiente</p>
+    <p class="eyebrow">Independent publisher</p>
     <h1>Bare&nbsp;Metal<br />Press</h1>
-    <p class="lede">
-      Libros técnicos, editados con cuidado y sin intermediarios.
-    </p>
+    <p class="lede">Technical books, carefully edited, published direct.</p>
   </section>
 
   <hr class="rule" />
 
-  <section class="wrap catalogo">
-    <h2 class="eyebrow">Catálogo</h2>
-    <p class="pendiente">Primer título en preparación.</p>
+  <section class="wrap catalog">
+    <h2 class="eyebrow">Catalog</h2>
+    <p class="pending">First title in preparation.</p>
   </section>
 
   <style>
@@ -40,11 +38,11 @@ const description =
       color: var(--ink-soft);
     }
 
-    .catalogo {
+    .catalog {
       padding-block: 3rem;
     }
 
-    .pendiente {
+    .pending {
       color: var(--muted);
       margin-top: 1rem;
     }

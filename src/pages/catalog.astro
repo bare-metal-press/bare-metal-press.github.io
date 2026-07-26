@@ -2,18 +2,15 @@
 import Base from '../layouts/Base.astro';
 ---
 
-<Base
-  title="La editorial"
-  description="Qué es Bare Metal Press y cómo publica."
->
-  <section class="wrap pagina">
-    <p class="eyebrow">La editorial</p>
-    <h1>Bare Metal Press</h1>
-    <p class="pendiente">Texto pendiente de escribir.</p>
+<Base title="Catalog" description="Books published by Bare Metal Press.">
+  <section class="wrap page">
+    <p class="eyebrow">Catalog</p>
+    <h1>Titles</h1>
+    <p class="pending">First title in preparation.</p>
   </section>
 
   <style>
-    .pagina {
+    .page {
       padding-block: clamp(2.5rem, 8vh, 5rem);
     }
 
@@ -23,7 +20,7 @@ import Base from '../layouts/Base.astro';
       margin-top: 1rem;
     }
 
-    .pendiente {
+    .pending {
       color: var(--muted);
       margin-top: 2rem;
       max-width: var(--measure);

@@ -60,7 +60,7 @@ img {
   display: block;
 }
 
-/* Marca y metadatos: monoespaciada, en versalitas espaciadas */
+/* Wordmark and metadata: mono, spaced small caps */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;
