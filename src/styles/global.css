@@ -1,3 +1,21 @@
+/* TeX Gyre Heros — a Helvetica-metric grotesque, GUST Font License.
+   Subset to Latin/Latin Extended-A; see LICENSE in /fonts. */
+@font-face {
+  font-family: 'TeX Gyre Heros';
+  src: url('/fonts/texgyreheros-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TeX Gyre Heros';
+  src: url('/fonts/texgyreheros-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --paper: #e9e6e4;
   --ink: #121418;
@@ -5,7 +23,7 @@
   --muted: #94918f;
   --rule: rgba(18, 20, 24, 0.14);
 
-  --font-display: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-display: 'TeX Gyre Heros', Helvetica, Arial, sans-serif;
   --font-text: Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
