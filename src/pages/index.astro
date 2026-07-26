@@ -1,8 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const description =
-  'Bare Metal Press is an independent publisher of technical books.';
+const description = 'Bare Metal Press.';
 ---
 
 <Base title={null} description={description}>
@@ -10,31 +9,18 @@ const description =
     <h1>Bare&nbsp;Metal<br />Press</h1>
   </section>
 
-  <hr class="rule" />
-
-  <section class="wrap catalog">
-    <h2 class="eyebrow">Catalog</h2>
-    <p class="pending">First title in preparation.</p>
-  </section>
-
   <style>
     .hero {
-      padding-block: clamp(3rem, 12vh, 7rem) clamp(2.5rem, 8vh, 5rem);
+      display: grid;
+      align-content: center;
+      min-height: 78svh;
+      padding-block: clamp(3rem, 10vh, 6rem);
     }
 
     h1 {
       font-size: clamp(3rem, 13vw, 8rem);
       letter-spacing: -0.045em;
       text-transform: uppercase;
-    }
-
-    .catalog {
-      padding-block: 3rem;
-    }
-
-    .pending {
-      color: var(--muted);
-      margin-top: 1rem;
     }
   </style>
 </Base>
