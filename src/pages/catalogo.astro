@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Catálogo" description="Catálogo de títulos de Bare Metal Press.">
+  <section class="wrap pagina">
+    <p class="eyebrow">Catálogo</p>
+    <h1>Títulos</h1>
+    <p class="pendiente">Primer título en preparación.</p>
+  </section>
+
+  <style>
+    .pagina {
+      padding-block: clamp(2.5rem, 8vh, 5rem);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 7vw, 4rem);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .pendiente {
+      color: var(--muted);
+      margin-top: 2rem;
+      max-width: var(--measure);
+    }
+  </style>
+</Base>

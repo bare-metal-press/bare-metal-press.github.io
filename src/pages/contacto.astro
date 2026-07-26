@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Contacto" description="Cómo contactar con Bare Metal Press.">
+  <section class="wrap pagina">
+    <p class="eyebrow">Contacto</p>
+    <h1>Escríbenos</h1>
+    <p class="texto">
+      Para consultas sobre los libros, distribución o prensa:
+    </p>
+    <p class="correo">
+      <a href="mailto:baremetalpress@pm.me">baremetalpress@pm.me</a>
+    </p>
+  </section>
+
+  <style>
+    .pagina {
+      padding-block: clamp(2.5rem, 8vh, 5rem);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 7vw, 4rem);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .texto {
+      margin-top: 2rem;
+      max-width: var(--measure);
+    }
+
+    .correo {
+      font-family: var(--font-mono);
+      font-size: 1.125rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</Base>

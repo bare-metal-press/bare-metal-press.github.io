@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+
+const description =
+  'Bare Metal Press es una editorial independiente dedicada a libros técnicos.';
+---
+
+<Base title={null} description={description}>
+  <section class="wrap hero">
+    <p class="eyebrow">Editorial independiente</p>
+    <h1>Bare&nbsp;Metal<br />Press</h1>
+    <p class="lede">
+      Libros técnicos, editados con cuidado y sin intermediarios.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="wrap catalogo">
+    <h2 class="eyebrow">Catálogo</h2>
+    <p class="pendiente">Primer título en preparación.</p>
+  </section>
+
+  <style>
+    .hero {
+      padding-block: clamp(3rem, 12vh, 7rem) clamp(2.5rem, 8vh, 5rem);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 13vw, 8rem);
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+
+    .lede {
+      max-width: var(--measure);
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      color: var(--ink-soft);
+    }
+
+    .catalogo {
+      padding-block: 3rem;
+    }
+
+    .pendiente {
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+  </style>
+</Base>

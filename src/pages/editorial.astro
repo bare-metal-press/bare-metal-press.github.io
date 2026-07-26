@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="La editorial"
+  description="Qué es Bare Metal Press y cómo publica."
+>
+  <section class="wrap pagina">
+    <p class="eyebrow">La editorial</p>
+    <h1>Bare Metal Press</h1>
+    <p class="pendiente">Texto pendiente de escribir.</p>
+  </section>
+
+  <style>
+    .pagina {
+      padding-block: clamp(2.5rem, 8vh, 5rem);
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 7vw, 4rem);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    .pendiente {
+      color: var(--muted);
+      margin-top: 2rem;
+      max-width: var(--measure);
+    }
+  </style>
+</Base>

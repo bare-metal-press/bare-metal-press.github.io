@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+
+const siteName = 'Bare Metal Press';
+const fullTitle = title ? `${title} · ${siteName}` : siteName;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="wrap site-header">
+      <a href="/" class="wordmark">Bare Metal Press</a>
+      <nav aria-label="Principal">
+        <a href="/catalogo/">Catálogo</a>
+        <a href="/editorial/">La editorial</a>
+        <a href="/contacto/">Contacto</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <footer class="wrap site-footer">
+      <hr class="rule" />
+      <div class="site-footer__inner">
+        <p class="eyebrow">Bare Metal Press</p>
+        <p class="eyebrow">
+          <a href="mailto:baremetalpress@pm.me">baremetalpress@pm.me</a>
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+        align-items: baseline;
+        justify-content: space-between;
+        padding-block: 1.75rem;
+      }
+
+      .wordmark {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 1.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+
+      nav a:hover {
+        color: var(--ink);
+      }
+
+      .site-footer {
+        margin-top: 6rem;
+        padding-bottom: 3rem;
+      }
+
+      .site-footer__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 2rem;
+        justify-content: space-between;
+        padding-top: 1.25rem;
+      }
+    </style>
+  </body>
+</html>
