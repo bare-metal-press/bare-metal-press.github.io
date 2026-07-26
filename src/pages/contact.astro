@@ -1,8 +1,195 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+
+/* GitHub Pages serves static files only, so the form is posted to
+   FormSubmit, which forwards it to the address below. The first submission
+   triggers a one-off activation email that has to be confirmed. */
+const FORM_ACTION = 'https://formsubmit.co/baremetalpress@pm.me';
+
+const profiles = [
+  'Research',
+  'Analysis',
+  'Writing',
+  'Editing',
+  'Translation',
+  'Typesetting and design',
+  'Other',
+];
 ---
 
 <Base title="Contact" description="How to reach Bare Metal Press.">
-  <Hero title="Contact" em={3.209} />
+  <Hero title="Contact" em={3.209} compact />
+
+  <section class="wrap intro">
+    <h2>Interested in working with us?</h2>
+    <p>
+      We commission research, analysis, writing, editing and technical review
+      for our titles.
+    </p>
+    <p>
+      Tell us what you do and where your work fits. Include the areas you can
+      cover, your relevant experience, and links to published or unpublished
+      work. Concrete examples carry more weight than a list of skills.
+    </p>
+    <p>
+      We read every submission. If your profile fits a current or upcoming
+      project, we will get in touch. If it does not, we will tell you.
+    </p>
+  </section>
+
+  <section class="wrap form-section">
+    <form action={FORM_ACTION} method="POST" class="form">
+      <input type="hidden" name="_subject" value="Bare Metal Press — enquiry" />
+      <input type="hidden" name="_template" value="table" />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://bare-metal-press.github.io/contact/thanks/"
+      />
+      <!-- Honeypot: hidden from people, filled in by bots. -->
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" aria-hidden="true" />
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="profile">Profile</label>
+        <select id="profile" name="profile" required>
+          {profiles.map((p) => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="links">Links to your work</label>
+        <input
+          id="links"
+          name="links"
+          type="text"
+          placeholder="Optional"
+        />
+      </div>
+
+      <div class="field">
+        <label for="message">Background and areas you can cover</label>
+        <textarea id="message" name="message" rows="7" required></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+
+      <p class="note">
+        Submissions are forwarded by email through FormSubmit. Nothing is
+        stored on this site. You can also write directly to
+        <a href="mailto:baremetalpress@pm.me">baremetalpress@pm.me</a>.
+      </p>
+    </form>
+  </section>
+
+  <style>
+    .intro {
+      max-width: 66rem;
+      padding-bottom: 1rem;
+    }
+
+    .intro h2 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      text-transform: uppercase;
+      max-width: 18ch;
+    }
+
+    .intro p {
+      max-width: var(--measure);
+      margin: 1.25rem 0 0;
+    }
+
+    .form-section {
+      padding-block: 3rem 1rem;
+    }
+
+    .form {
+      max-width: var(--measure);
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 0;
+      padding: 0.65rem 0.75rem;
+      width: 100%;
+      appearance: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--ink);
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .honeypot {
+      position: absolute;
+      left: -9999px;
+    }
+
+    button {
+      justify-self: start;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--paper);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      padding: 0.85rem 2rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .note {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+    }
+  </style>
 </Base>

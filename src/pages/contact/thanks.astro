@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+---
+
+<Base title="Thank you" description="Your message has been sent.">
+  <Hero title="Thank you" em={3.991} compact />
+
+  <section class="wrap">
+    <p>
+      Your message has reached us. If your profile fits a current or upcoming
+      project, we will get in touch.
+    </p>
+    <p><a href="/">Back to the home page</a></p>
+  </section>
+
+  <style>
+    section {
+      padding-bottom: 2rem;
+    }
+
+    p {
+      max-width: var(--measure);
+      margin: 0 0 1.25rem;
+    }
+  </style>
+</Base>

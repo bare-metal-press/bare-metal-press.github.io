@@ -13,11 +13,14 @@
  *
  * The 0.986 factor leaves a hair of slack so rounding never forces a wrap.
  */
-const { title, em } = Astro.props;
+const { title, em, compact = false } = Astro.props;
 const fit = `${((100 / em) * 0.986).toFixed(2)}cqi`;
 ---
 
-<section class="wrap hero" style={`--fit: ${fit}`}>
+<section
+  class:list={['wrap', 'hero', { 'hero--compact': compact }]}
+  style={`--fit: ${fit}`}
+>
   <h1>{title}</h1>
 </section>
 
@@ -28,6 +31,12 @@ const fit = `${((100 / em) * 0.986).toFixed(2)}cqi`;
     min-height: 78svh;
     padding-block: clamp(3rem, 10vh, 6rem);
     container-type: inline-size;
+  }
+
+  /* Pages that carry content below the title need it to stop short of
+     filling the viewport, so the text beneath is visible on landing. */
+  .hero--compact {
+    min-height: 46svh;
   }
 
   h1 {
