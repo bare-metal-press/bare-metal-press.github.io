@@ -4,5 +4,42 @@ import Hero from '../components/Hero.astro';
 ---
 
 <Base title="About" description="What Bare Metal Press is and how it publishes.">
-  <Hero title="About" em={2.319} />
+  <Hero title="About" em={2.319} compact />
+
+  <section class="wrap intro">
+    <h2>Down to the metal</h2>
+    <p>
+      We are a group of researchers and analysts running an independent
+      project: training material across multiple disciplines, written by people
+      who work in them.
+    </p>
+    <p>
+      Most instructional material stops at the surface. It explains the
+      interface and leaves the machinery untouched, which holds up until the
+      reader meets a problem the manual did not anticipate. We write the other
+      kind — the account that goes all the way down, so what remains afterwards
+      is understanding rather than a procedure to repeat.
+    </p>
+    <p>
+      Independent means what it says: no sponsor, no syllabus committee, no
+      house line to defend. We publish a subject when we can treat it properly,
+      and not before.
+    </p>
+  </section>
+
+  <style>
+    .intro {
+      padding-bottom: 2rem;
+    }
+
+    .intro h2 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      text-transform: uppercase;
+    }
+
+    .intro p {
+      max-width: var(--measure);
+      margin: 1.25rem 0 0;
+    }
+  </style>
 </Base>
