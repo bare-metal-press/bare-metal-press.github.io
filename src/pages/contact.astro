@@ -62,12 +62,19 @@ const profiles = [
         />
       </div>
 
-      <div class="field">
-        <label for="profile">Profile</label>
-        <select id="profile" name="profile" required>
-          {profiles.map((p) => <option value={p}>{p}</option>)}
-        </select>
-      </div>
+      <fieldset class="field">
+        <legend>Profile</legend>
+        <div class="options">
+          {
+            profiles.map((p) => (
+              <label class="option">
+                <input type="radio" name="profile" value={p} required />
+                <span>{p}</span>
+              </label>
+            ))
+          }
+        </div>
+      </fieldset>
 
       <div class="field">
         <label for="links">Links to your work</label>
@@ -125,7 +132,8 @@ const profiles = [
       gap: 0.5rem;
     }
 
-    label {
+    label,
+    legend {
       font-family: var(--font-mono);
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -133,8 +141,8 @@ const profiles = [
       color: var(--muted);
     }
 
-    input,
-    select,
+    input[type='text'],
+    input[type='email'],
     textarea {
       font: inherit;
       color: var(--ink);
@@ -146,11 +154,59 @@ const profiles = [
       appearance: none;
     }
 
-    input:focus,
-    select:focus,
+    input[type='text']:focus,
+    input[type='email']:focus,
     textarea:focus {
       border-color: var(--ink);
       outline: none;
+    }
+
+    /* Radios instead of a select: a native dropdown is drawn by the OS and
+       ignores the site's palette and type entirely. */
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    legend {
+      padding: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+    }
+
+    .option input:checked + span {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .option input:focus-visible + span {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
     }
 
     textarea {
