@@ -1,8 +1,224 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+
+/**
+ * Extents are measured, not estimated: page counts come from the print PDFs,
+ * word counts from the manuscripts. Only Loop Engineering carries an ISBN so
+ * far, so only Loop Engineering shows one. Nothing here links to a store
+ * because no store listing has been wired up yet — add the links as they exist
+ * rather than inventing them.
+ */
+const sections = [
+  {
+    name: 'OSINT and operational security',
+    books: [
+      {
+        n: '01',
+        title: 'Fundamentos — Volumen I',
+        sub: 'Biblioteca OSINT: registro de referencia. Agnóstico por construcción — sin jurisdicción, marca ni supuesto de idioma.',
+        extent: '70,000 words',
+      },
+      {
+        n: '02',
+        title: 'Linux para OSINT',
+        sub: 'Metodología agnóstica de inteligencia de fuentes abiertas, del intérprete de comandos a la inteligencia de infraestructura.',
+        extent: '158,000 words',
+      },
+      {
+        n: '03',
+        title: 'Qubes OS',
+        sub: 'Compartimentación operativa: un tratado sobre la seguridad por aislamiento.',
+        extent: '672 pages · 6×9',
+      },
+      {
+        n: '04',
+        title: 'Tails para investigadores OSINT',
+        sub: 'Guía completa del sistema amnésico. Protege al investigador, no enseña a investigar: da por sabido lo segundo.',
+        extent: '118,000 words',
+      },
+    ],
+  },
+  {
+    name: 'AI systems and agents',
+    books: [
+      {
+        n: '05',
+        title: 'Ollama RAG Local',
+        sub: 'Recuperación aumentada por generación que corre entera en hardware propio. Sin suscripción, sin nube, sin que la documentación salga de sus servidores.',
+        extent: '208,000 words',
+      },
+      {
+        n: '06',
+        title: 'LangGraph',
+        sub: 'Orquestación de agentes de IA: ramificación, herramientas, aprobación humana y recuperación ante fallo.',
+        extent: '390,000 words',
+      },
+      {
+        n: '07',
+        title: 'Servidores MCP con Python y TypeScript',
+        sub: 'Cómo se conecta un modelo desplegado a los sistemas que la empresa ya usa. La frontera entre una demo y una herramienta.',
+        extent: '414,000 words',
+      },
+      {
+        n: '—',
+        title: 'Loop Engineering',
+        sub: 'Designing autonomous loops for AI agents: triggers, verification, state, and stopping conditions.',
+        extent: '360 pages',
+        isbn: '979-8-18939-817-9',
+        note: 'First edition, 2026. Also published in Spanish as Ingeniería de bucles, 242 pages.',
+      },
+    ],
+  },
+  {
+    name: 'Logistics and operations',
+    books: [
+      {
+        n: '08',
+        title: 'Incoterms',
+        sub: 'Manual profesional de las reglas del comercio internacional: entrega, riesgo y costes.',
+        extent: '212 pages',
+      },
+    ],
+  },
+];
 ---
 
-<Base title="Catalog" description="Books published by Bare Metal Press.">
-  <Hero title="Catalog" em={3.209} />
+<Base
+  title="Catalog"
+  description="Technical manuals from Bare Metal Press: OSINT, operational security, AI systems and international trade."
+>
+  <Hero title="Catalog" em={3.209} compact />
+
+  <div class="wrap">
+    <p class="lede">
+      Long-form technical manuals. Every title is written to be read end to end
+      rather than searched, and to stay true after the tooling it describes has
+      moved on. Published in Spanish unless noted.
+    </p>
+
+    <hr class="rule" />
+
+    {
+      sections.map((section) => (
+        <section class="section">
+          <h2 class="eyebrow section__name">{section.name}</h2>
+
+          <ol class="books">
+            {section.books.map((book) => (
+              <li class="book">
+                <span class="book__n" aria-hidden="true">
+                  {book.n}
+                </span>
+                <div class="book__body">
+                  <h3 class="book__title">{book.title}</h3>
+                  <p class="book__sub">{book.sub}</p>
+                  <p class="book__meta">
+                    <span>{book.extent}</span>
+                    {book.isbn && <span>ISBN {book.isbn}</span>}
+                  </p>
+                  {book.note && <p class="book__note">{book.note}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+
+    <hr class="rule" />
+
+    <p class="foot">
+      For rights, review copies or bulk orders, use the <a href="/contact/"
+        >contact page</a
+      >.
+    </p>
+  </div>
 </Base>
+
+<style>
+  .lede {
+    font-size: 1.25rem;
+    max-width: var(--measure);
+    margin: 0 0 clamp(2rem, 6vh, 3.5rem);
+  }
+
+  .section {
+    padding-block: clamp(2.5rem, 7vh, 4rem);
+  }
+
+  .section__name {
+    margin-bottom: 1.75rem;
+  }
+
+  .books {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(2rem, 5vh, 3rem);
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1.5rem;
+    align-items: start;
+  }
+
+  .book__n {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 1;
+    color: var(--rule);
+    /* Optically aligns the numeral's cap height with the title's. */
+    margin-top: -0.05em;
+  }
+
+  .book__body {
+    max-width: var(--measure);
+  }
+
+  .book__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+  }
+
+  .book__sub {
+    margin: 0.5rem 0 0;
+  }
+
+  .book__meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin: 0.75rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .book__note {
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    margin: 0.5rem 0 0;
+  }
+
+  .foot {
+    max-width: var(--measure);
+    padding-block: clamp(2rem, 6vh, 3rem);
+  }
+
+  @media (max-width: 34rem) {
+    .book {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .book__n {
+      font-size: 1.5rem;
+    }
+  }
+</style>
